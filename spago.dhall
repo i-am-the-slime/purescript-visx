@@ -14,11 +14,13 @@ to generate this file without the comments in this block.
 , dependencies =
   [ "arrays"
   , "console"
+  , "debug"
   , "effect"
   , "either"
   , "foldable-traversable"
   , "foreign"
   , "foreign-object"
+  , "functions"
   , "justifill"
   , "lists"
   , "maybe"

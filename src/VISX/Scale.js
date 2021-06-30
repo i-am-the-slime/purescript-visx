@@ -2,6 +2,7 @@ const scale = require("@visx/scale")
 
 exports.scaleLinearImpl = scale.scaleLinear
 exports.scaleBandImpl = scale.scaleBand
+exports.scaleQuantizeImpl = scale.scaleQuantize
 
 exports.bandwidth = (bandScale) => bandScale.bandwidth
 

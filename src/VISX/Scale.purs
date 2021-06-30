@@ -1,5 +1,14 @@
-module VISX.Scale (scaleBand, BandScale, LinearScale, scaleLinear,
-  scaled, class Scale, bandwidth) where
+module VISX.Scale 
+  ( scaleBand
+  , BandScale
+  , LinearScale
+  , scaleLinear
+  , scaleQuantize
+  , QuantizeScale
+  , scaled
+  , class Scale
+  , bandwidth
+  ) where
 
 import Data.Function (flip)
 import Data.Maybe (Maybe)
@@ -31,7 +40,6 @@ type LinearScaleConfig =
 
 foreign import scaleLinearImpl ∷ ∀ a. Foreign -> LinearScale Number a
 
-
 scaleLinear ∷
   ∀ opt.
   Options opt LinearScaleConfig =>
@@ -40,7 +48,7 @@ scaleLinear config =
   scaleLinearImpl
     (FFI.write (toOptions config ∷ LinearScaleConfig))
 
--- 
+-- Band Scale
 foreign import data BandScale ∷ Type -> Type -> Type
 instance Scale (BandScale a b)
 
@@ -63,3 +71,23 @@ scaleBand config =
     (FFI.write (toOptions config ∷ (BandScaleConfig a)))
 
 foreign import bandwidth ∷ ∀ a b. BandScale a b -> Effect b
+
+-- Quantised Scale
+foreign import data QuantizeScale ∷ Type -> Type -> Type
+instance Scale (QuantizeScale a b)
+
+type QuantizeScaleConfig a =
+  { domain ∷ Int /\ Int
+  , range ∷ Array a
+  }
+
+foreign import scaleQuantizeImpl ∷ ∀ a b. Foreign -> (QuantizeScale a b)
+
+scaleQuantize ∷
+  ∀ opt a b.
+  Options opt (QuantizeScaleConfig a) =>
+  WriteForeign a =>
+  opt -> QuantizeScale a b
+scaleQuantize config =
+  scaleQuantizeImpl
+    (FFI.write (toOptions config ∷ (QuantizeScaleConfig a)))
