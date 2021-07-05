@@ -3,5 +3,6 @@
 		".spago": true,
 		"node_modules": true,
 		"output": true
-	}
+  },
+  "purescript.buildCommand": "spago -x stories.dhall build --purs-args --json-errors"
 }

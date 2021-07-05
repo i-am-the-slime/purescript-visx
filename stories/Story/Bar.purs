@@ -29,9 +29,9 @@ mkExample = do
   let verticalMargin = 70.0
   let
     mkBar { yMax, xScale, yScale } { letter, frequency } = do
-      barWidth <- bandwidth xScale
-      barHeight <- (yMax - _) <$> (yScale # scaled frequency)
-      barX <- xScale # scaled letter
+      barWidth ← bandwidth xScale
+      barHeight ← (yMax - _) <$> (yScale # scaled frequency)
+      barX ← xScale # scaled letter
       let barY = yMax - barHeight
       pure
         $ element Shape.bar
@@ -41,25 +41,25 @@ mkExample = do
             , y: barY
             , fill: "rgba(120, 230, 250, 0.6)"
             }
-  React.component "Bar Example" \{ width, height } -> React.do
+  React.component "Bar Example" \{ width, height } → React.do
     let xMax = (width ∷ Number)
     let yMax = height - verticalMargin
-    xScale ∷ BandScale String Number <-
-      React.useMemo xMax \_ ->
+    xScale ∷ BandScale String Number ←
+      React.useMemo xMax \_ →
         scaleBand
           { domain: theData <#> _.letter
           , range: 0.0 /\ xMax
           , round: true
           , padding: 0.4
           }
-    yScale ∷ LinearScale Number Number <-
-      React.useMemo yMax \_ ->
+    yScale ∷ LinearScale Number Number ←
+      React.useMemo yMax \_ →
         scaleLinear
           { domain: 0.0 /\ (theData <#> _.frequency # ala Max foldMap)
           , range: yMax /\ 0.0
           , round: true
           }
-    bars /\ setBars <- React.useState' []
+    bars /\ setBars ← React.useState' []
     useEffect { width, height } do
       setBars =<< for theData (mkBar { yMax, xScale, yScale })
       mempty
@@ -68,16 +68,16 @@ mkExample = do
           { width: show width
           , height: show height
           , children:
-            [ element gradientTealBlueImpl { id: "bg-gradient" }
-            , R.rect
-                { rx: "20"
-                , width: show width
-                , height: show height
-                , fill: "url(#bg-gradient)"
-                }
-            , element VISX.group
-                { top: verticalMargin / 2.0
-                , children: bars
-                }
-            ]
+              [ element gradientTealBlueImpl { id: "bg-gradient" }
+              , R.rect
+                  { rx: "20"
+                  , width: show width
+                  , height: show height
+                  , fill: "url(#bg-gradient)"
+                  }
+              , element VISX.group
+                  { top: verticalMargin / 2.0
+                  , children: bars
+                  }
+              ]
           }
