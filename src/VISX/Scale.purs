@@ -12,12 +12,19 @@ module VISX.Scale
   , bandwidth
   ) where
 
+import Prelude
 import Data.Array.NonEmpty (NonEmptyArray)
+import Data.Array.NonEmpty as NEA
 import Data.Function (flip)
 import Data.Maybe (Maybe)
-import Data.Tuple.Nested (type (/\))
+import Data.Tuple (Tuple)
+import Data.Tuple.Nested (type (/\), (/\))
 import Effect (Effect)
 import Foreign (Foreign)
+import Prim.Row (class Lacks)
+import Prim.RowList (class RowToList)
+import Record.Builder as Builder
+import Type.Proxy (Proxy(..))
 import VISX.FFI (class Options, class WriteForeign, toOptions)
 import VISX.FFI as FFI
 
@@ -112,6 +119,10 @@ foreign import data OrdinalScale ∷ Type → Type → Type
 instance Scale (OrdinalScale domain codomain)
 
 type OrdinalScaleConfig domain codomain
+  = { domainAndRange ∷ NonEmptyArray (Tuple domain codomain)
+    }
+
+type OrdinalScaleConfigImpl domain codomain
   = { domain ∷ NonEmptyArray domain
     , range ∷ NonEmptyArray codomain
     }
@@ -123,11 +134,27 @@ foreign import scaleOrdinalImpl ∷
 
 scaleOrdinal ∷
   ∀ opt domain codomain.
-  Options opt (OrdinalScaleConfig domain codomain) ⇒
+  Options { domain ∷ NonEmptyArray domain, range ∷ NonEmptyArray codomain | opt } (OrdinalScaleConfigImpl domain codomain) ⇒
   WriteForeign domain ⇒
   WriteForeign codomain ⇒
-  opt →
+  Lacks "domain" opt ⇒
+  Lacks "range" opt ⇒
+  Lacks "domainAndRange" opt ⇒
+  { domainAndRange ∷ NonEmptyArray (domain /\ codomain) | opt } →
   OrdinalScale domain codomain
 scaleOrdinal config =
-  scaleOrdinalImpl
-    (FFI.write (toOptions config ∷ (OrdinalScaleConfig domain codomain)))
+  scaleOrdinalImpl (FFI.write configImpl)
+  where
+  domain /\ range = NEA.unzip config.domainAndRange
+  configImpl ∷ OrdinalScaleConfigImpl domain codomain
+  configImpl =
+    toOptions
+      $ ( ( Builder.build
+              ( Builder.delete (Proxy ∷ Proxy "domainAndRange")
+                  >>> Builder.insert (Proxy ∷ Proxy "domain") domain
+                  >>> Builder.insert (Proxy ∷ Proxy "range") range
+              )
+              config
+          ) ∷
+            { domain ∷ NonEmptyArray domain, range ∷ NonEmptyArray codomain | opt }
+        )
