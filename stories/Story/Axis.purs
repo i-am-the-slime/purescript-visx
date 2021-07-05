@@ -4,6 +4,7 @@ import Prelude
 import D3.Format as D3
 import Data.Array (foldMap)
 import Data.Array as Array
+import Data.Function.Uncurried (mkFn2)
 import Data.Newtype (ala)
 import Data.Ord.Max (Max(..))
 import Data.Traversable (for)
@@ -14,10 +15,10 @@ import React.Basic.DOM.SVG as R
 import React.Basic.Hooks (Component, useEffect)
 import React.Basic.Hooks as React
 import VISX.Axis (axisBottom, axisLeft, labelProps)
-import VISX.Util.SVG.Gradient (gradientTealBlueImpl)
 import VISX.Scale (BandScale, LinearScale, bandwidth, scaleBand, scaleLinear, scaled)
 import VISX.Shape as Shape
 import VISX.Util.Data.MockData (letterFrequency)
+import VISX.Util.SVG.Gradient (gradientTealBlueImpl)
 import VISX.Util.SVG.Group (group) as VISX
 
 default ∷ { title ∷ String }
@@ -77,13 +78,13 @@ mkExample = do
           , numTicks: Array.length theData
           , hideTicks: true
           , tickLabelProps:
-              pure
-                $ labelProps
-                    { fill: "rgb(235,255,255)"
-                    , fontFamily: "InterVariable, 'Comic Sans MS'"
-                    , fontSize: "16px"
-                    , textAnchor: "middle"
-                    }
+              mkFn2 \_ _ →
+                labelProps
+                  { fill: "rgb(235,255,255)"
+                  , fontFamily: "InterVariable, 'Comic Sans MS'"
+                  , fontSize: "16px"
+                  , textAnchor: "middle"
+                  }
           }
       axisY =
         element axisLeft
@@ -97,14 +98,14 @@ mkExample = do
           , numTicks: 5
           , hideZero: true
           , tickLabelProps:
-              pure
-                $ labelProps
-                    { fill: "rgb(235,255,255)"
-                    , fontFamily: "InterVariable, 'Comic Sans MS'"
-                    , fontSize: "14px"
-                    , dominantBaseline: "middle"
-                    , textAnchor: "end"
-                    }
+              mkFn2 \_ _ →
+                labelProps
+                  { fill: "rgb(235,255,255)"
+                  , fontFamily: "InterVariable, 'Comic Sans MS'"
+                  , fontSize: "14px"
+                  , dominantBaseline: "middle"
+                  , textAnchor: "end"
+                  }
           }
     pure
       $ R.svg

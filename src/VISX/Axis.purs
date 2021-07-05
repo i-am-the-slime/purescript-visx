@@ -13,72 +13,74 @@ module VISX.Axis
   ) where
 
 import D3.Format (D3Format)
-import Effect (Effect)
+import Data.Function.Uncurried (Fn2)
 import Prim.Row (class Union)
 import React.Basic (JSX, ReactComponent)
 import React.Basic.DOM.SVG (Props_text)
 import Unsafe.Coerce (unsafeCoerce)
 import VISX.Scale (class Scale)
 
-type AxisRendererProps =
-  {}
+type AxisRendererProps
+  = {}
 
-type TickRendererProps =
-  {}
+type TickRendererProps
+  = {}
 
 foreign import data LabelProps ∷ Type
 
-labelProps ∷ ∀ attrs attrs_. Union attrs attrs_ Props_text => { | attrs } -> LabelProps
+labelProps ∷ ∀ attrs attrs_. Union attrs attrs_ Props_text ⇒ { | attrs } → LabelProps
 labelProps = unsafeCoerce
 
-type AxisProps r =
-  ( scale ∷ ∀ scale. scale
-  , axisClassName ∷ String
-  , axisLineClassName ∷ String
-  , children ∷ AxisRendererProps -> JSX
-  , hideAxisLine ∷ Boolean
-  , hideTicks ∷ Boolean
-  , hideZero ∷ Boolean
-  , label ∷ String
-  , labelClassName ∷ String
-  , labelOffset ∷ Number
-  , labelProps ∷ LabelProps
-  , left ∷ Number
-  , numTicks ∷ Int
-  , orientation ∷ String
-  , rangePadding ∷ Number
-  , stroke ∷ String
-  , strokeDasharray ∷ String
-  , strokeWidth ∷ String
-  , tickClassName ∷ String
-  , tickComponent ∷ TickRendererProps -> JSX
-  , tickFormat ∷ D3Format
-  , tickLabelProps ∷ Effect LabelProps -- TODO proper not sure this is really an effect
-  , tickLength ∷ Number
-  , ticksComponent ∷ TickRendererProps -> JSX
-  , tickStroke ∷ String
-  , tickTransform ∷ String
-  -- , tickValues :: NoIdea
-  , top ∷ Number
-  | r
-  )
+type AxisProps ∷ ∀ k. Row Type → Type → k → Row Type
+type AxisProps r domain codomain
+  = ( scale ∷ ∀ scale. scale domain codomain
+    , axisClassName ∷ String
+    , axisLineClassName ∷ String
+    , children ∷ AxisRendererProps → JSX
+    , hideAxisLine ∷ Boolean
+    , hideTicks ∷ Boolean
+    , hideZero ∷ Boolean
+    , label ∷ String
+    , labelClassName ∷ String
+    , labelOffset ∷ Number
+    , labelProps ∷ LabelProps
+    , left ∷ Number
+    , numTicks ∷ Int
+    , orientation ∷ String
+    , rangePadding ∷ Number
+    , stroke ∷ String
+    , strokeDasharray ∷ String
+    , strokeWidth ∷ String
+    , tickClassName ∷ String
+    , tickComponent ∷ TickRendererProps → JSX
+    , tickFormat ∷ D3Format
+    , tickLabelProps ∷ Fn2 domain Int LabelProps
+    , tickLength ∷ Number
+    , ticksComponent ∷ TickRendererProps → JSX
+    , tickStroke ∷ String
+    , tickTransform ∷ String
+    -- , tickValues :: NoIdea
+    , top ∷ Number
+    | r
+    )
 
-type DefaultAxisProps =
-  AxisProps ( width ∷ String, height ∷ String, display ∷ String )
+type DefaultAxisProps ∷ ∀ k. Type → k → Row Type
+type DefaultAxisProps domain codomain
+  = AxisProps ( width ∷ String, height ∷ String, display ∷ String ) domain codomain
 
-axis ∷ ∀ scale attrs attrs_. Scale scale => Union attrs attrs_ (AxisProps ()) => ReactComponent { scale ∷ scale | attrs }
+axis ∷ ∀ scale domain codomain attrs attrs_. Scale (scale domain codomain) ⇒ Union attrs attrs_ (DefaultAxisProps domain codomain) ⇒ ReactComponent { scale ∷ scale domain codomain | attrs }
 axis = axisImpl
 
-axisLeft ∷ ∀ scale attrs attrs_. Scale scale => Union attrs attrs_ DefaultAxisProps => ReactComponent { scale ∷ scale | attrs }
+axisLeft ∷ ∀ scale domain codomain attrs attrs_. Scale (scale domain codomain) ⇒ Union attrs attrs_ (DefaultAxisProps domain codomain) ⇒ ReactComponent { scale ∷ scale domain codomain | attrs }
 axisLeft = axisLeftImpl
 
-axisTop ∷ ∀ scale attrs attrs_. Scale scale => Union attrs attrs_ DefaultAxisProps => ReactComponent { scale ∷ scale | attrs }
+axisTop ∷ ∀ scale domain codomain attrs attrs_. Scale (scale domain codomain) ⇒ Union attrs attrs_ (DefaultAxisProps domain codomain) ⇒ ReactComponent { scale ∷ scale domain codomain | attrs }
 axisTop = axisTopImpl
 
-axisRight ∷ ∀ scale attrs attrs_. Scale scale => Union attrs attrs_ DefaultAxisProps => ReactComponent { scale ∷ scale | attrs }
+axisRight ∷ ∀ scale domain codomain attrs attrs_. Scale (scale domain codomain) ⇒ Union attrs attrs_ (DefaultAxisProps domain codomain) ⇒ ReactComponent { scale ∷ scale domain codomain | attrs }
 axisRight = axisRightImpl
 
-axisBottom ∷ ∀ scale attrs attrs_. Scale scale => Union attrs attrs_ DefaultAxisProps => ReactComponent { scale ∷ scale | attrs }
+axisBottom ∷ ∀ scale domain codomain attrs attrs_. Scale (scale domain codomain) ⇒ Union attrs attrs_ (DefaultAxisProps domain codomain) ⇒ ReactComponent { scale ∷ scale domain codomain | attrs }
 axisBottom = axisBottomImpl
 
 foreign import axisImpl ∷ ∀ a. ReactComponent { | a }
