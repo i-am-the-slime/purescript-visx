@@ -1,12 +1,14 @@
-module VISX.Scale 
-  ( scaleBand
-  , BandScale
+module VISX.Scale
+  ( class Scale
+  , scaled
   , LinearScale
   , scaleLinear
-  , scaleQuantize
   , QuantizeScale
-  , scaled
-  , class Scale
+  , scaleQuantize
+  , OrdinalScale
+  , scaleOrdinal
+  , BandScale
+  , scaleBand
   , bandwidth
   ) where
 
@@ -18,76 +20,113 @@ import Foreign (Foreign)
 import VISX.FFI (class Options, class WriteForeign, toOptions)
 import VISX.FFI as FFI
 
-class Scale :: forall k. k -> Constraint
+class Scale ∷ ∀ k. k → Constraint
 class Scale scale
 
-foreign import scaleValueImpl :: forall scale domain range. scale -> domain -> Effect range
+foreign import scaleValueImpl ∷
+  ∀ scale domain range.
+  scale →
+  domain →
+  Effect range
 
-scaled ∷ ∀ scale domain range. Scale (scale domain range) => domain -> scale domain range -> Effect range
+scaled ∷
+  ∀ scale domain range.
+  Scale (scale domain range) ⇒
+  domain →
+  scale domain range →
+  Effect range
 scaled = flip scaleValueImpl
 
 -- Linear Scale
-foreign import data LinearScale ∷ Type -> Type -> Type
+foreign import data LinearScale ∷ Type → Type → Type
 instance Scale (LinearScale a b)
 
-type LinearScaleConfig =
-  { domain ∷ Number /\ Number
-  , range ∷ Number /\ Number
-  , round ∷ Maybe Boolean
-  , nice ∷ Maybe Boolean
-  , clamp ∷ Maybe Boolean
-  }
+type LinearScaleConfig
+  = { domain ∷ Number /\ Number
+    , range ∷ Number /\ Number
+    , round ∷ Maybe Boolean
+    , nice ∷ Maybe Boolean
+    , clamp ∷ Maybe Boolean
+    }
 
-foreign import scaleLinearImpl ∷ ∀ a. Foreign -> LinearScale Number a
+foreign import scaleLinearImpl ∷ ∀ a. Foreign → LinearScale Number a
 
 scaleLinear ∷
   ∀ opt.
-  Options opt LinearScaleConfig =>
-  opt -> LinearScale Number _
+  Options opt LinearScaleConfig ⇒
+  opt →
+  LinearScale Number _
 scaleLinear config =
   scaleLinearImpl
     (FFI.write (toOptions config ∷ LinearScaleConfig))
 
 -- Band Scale
-foreign import data BandScale ∷ Type -> Type -> Type
+foreign import data BandScale ∷ Type → Type → Type
 instance Scale (BandScale a b)
 
-type BandScaleConfig a =
-  { domain ∷ Array a
-  , range ∷ Number /\ Number
-  , round ∷ Maybe Boolean
-  , padding ∷ Maybe Number
-  }
+type BandScaleConfig a
+  = { domain ∷ Array a
+    , range ∷ Number /\ Number
+    , round ∷ Maybe Boolean
+    , padding ∷ Maybe Number
+    }
 
-foreign import scaleBandImpl ∷ ∀ a b. Foreign -> (BandScale a b)
+foreign import scaleBandImpl ∷ ∀ a b. Foreign → (BandScale a b)
 
 scaleBand ∷
   ∀ opt a b.
-  Options opt (BandScaleConfig a) =>
-  WriteForeign a =>
-  opt -> BandScale a b
+  Options opt (BandScaleConfig a) ⇒
+  WriteForeign a ⇒
+  opt →
+  BandScale a b
 scaleBand config =
   scaleBandImpl
     (FFI.write (toOptions config ∷ (BandScaleConfig a)))
 
-foreign import bandwidth ∷ ∀ a b. BandScale a b -> Effect b
+foreign import bandwidth ∷ ∀ a b. BandScale a b → Effect b
 
 -- Quantised Scale
-foreign import data QuantizeScale ∷ Type -> Type -> Type
+foreign import data QuantizeScale ∷ Type → Type → Type
 instance Scale (QuantizeScale a b)
 
-type QuantizeScaleConfig a =
-  { domain ∷ Int /\ Int
-  , range ∷ Array a
-  }
+type QuantizeScaleConfig a
+  = { domain ∷ Int /\ Int
+    , range ∷ Array a
+    }
 
-foreign import scaleQuantizeImpl ∷ ∀ a b. Foreign -> (QuantizeScale a b)
+foreign import scaleQuantizeImpl ∷ ∀ a b. Foreign → (QuantizeScale a b)
 
 scaleQuantize ∷
   ∀ opt a b.
-  Options opt (QuantizeScaleConfig a) =>
-  WriteForeign a =>
-  opt -> QuantizeScale a b
+  Options opt (QuantizeScaleConfig a) ⇒
+  WriteForeign a ⇒
+  opt →
+  QuantizeScale a b
 scaleQuantize config =
   scaleQuantizeImpl
     (FFI.write (toOptions config ∷ (QuantizeScaleConfig a)))
+
+-- Ordinal Scale
+foreign import data OrdinalScale ∷ Type → Type → Type
+instance Scale (OrdinalScale domain codomain)
+
+type OrdinalScaleConfig domain codomain
+  = { domain ∷ Array domain
+    , range ∷ Array codomain
+    }
+
+foreign import scaleOrdinalImpl ∷
+  ∀ domain codomain.
+  Foreign →
+  (OrdinalScale domain codomain)
+
+scaleOrdinal ∷
+  ∀ opt domain codomain.
+  Options opt (OrdinalScaleConfig domain codomain) ⇒
+  WriteForeign domain ⇒
+  WriteForeign codomain ⇒
+  opt →
+  OrdinalScale domain codomain
+scaleOrdinal config =
+  scaleOrdinalImpl
+    (FFI.write (toOptions config ∷ (OrdinalScaleConfig domain codomain)))
