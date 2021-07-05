@@ -29,10 +29,11 @@ axis = mkExample <@> { width: 750.0, height: 280.0 }
 
 mkExample ∷ Component { width ∷ Number, height ∷ Number }
 mkExample = do
-  let theData = letterFrequency
-  let verticalMargin = 70.0
-  let leftPadding = 50.0
   let
+    theData = letterFrequency
+    verticalMargin = 70.0
+    leftPadding = 50.0
+
     mkBar { yMax, xScale, yScale } { letter, frequency } = do
       barWidth ← bandwidth xScale
       barHeight ← (yMax - _) <$> (yScale # scaled frequency)
