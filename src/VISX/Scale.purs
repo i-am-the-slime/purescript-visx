@@ -12,6 +12,7 @@ module VISX.Scale
   , bandwidth
   ) where
 
+import Data.Array.NonEmpty (NonEmptyArray)
 import Data.Function (flip)
 import Data.Maybe (Maybe)
 import Data.Tuple.Nested (type (/\))
@@ -111,8 +112,8 @@ foreign import data OrdinalScale ∷ Type → Type → Type
 instance Scale (OrdinalScale domain codomain)
 
 type OrdinalScaleConfig domain codomain
-  = { domain ∷ Array domain
-    , range ∷ Array codomain
+  = { domain ∷ NonEmptyArray domain
+    , range ∷ NonEmptyArray codomain
     }
 
 foreign import scaleOrdinalImpl ∷
