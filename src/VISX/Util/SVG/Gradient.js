@@ -1,14 +1,14 @@
 const gradient = require("@visx/gradient")
 
-exports.linearGradientImpl = gradient.LinearGradient
-exports.radialGradientImpl = gradient.RadialGradient
-exports.gradientDarkgreenGreenImpl = gradient.GradientDarkgreenGreen
-exports.gradientLightgreenGreenImpl = gradient.GradientLightgreenGreen
-exports.gradientOrangeRedImpl = gradient.GradientOrangeRed
-exports.gradientPinkBlueImpl = gradient.GradientPinkBlue
-exports.gradientPinkRedImpl = gradient.GradientPinkRed
-exports.gradientPurpleOrangeImpl = gradient.GradientPurpleOrange
-exports.gradientPurpleRedImpl = gradient.GradientPurpleRed
-exports.gradientPurpleTealImpl = gradient.GradientPurpleTeal
-exports.gradientSteelPurpleImpl = gradient.GradientSteelPurple
-exports.gradientTealBlueImpl = gradient.GradientTealBlue
+exports.linearGradient = gradient.LinearGradient
+exports.radialGradient = gradient.RadialGradient
+exports.gradientDarkgreenGreen = gradient.GradientDarkgreenGreen
+exports.gradientLightgreenGreen = gradient.GradientLightgreenGreen
+exports.gradientOrangeRed = gradient.GradientOrangeRed
+exports.gradientPinkBlue = gradient.GradientPinkBlue
+exports.gradientPinkRed = gradient.GradientPinkRed
+exports.gradientPurpleOrange = gradient.GradientPurpleOrange
+exports.gradientPurpleRed = gradient.GradientPurpleRed
+exports.gradientPurpleTeal = gradient.GradientPurpleTeal
+exports.gradientSteelPurple = gradient.GradientSteelPurple
+exports.gradientTealBlue = gradient.GradientTealBlue

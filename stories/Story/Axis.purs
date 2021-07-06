@@ -18,7 +18,7 @@ import VISX.Axis (axisBottom, axisLeft, labelProps)
 import VISX.Scale (BandScale, LinearScale, bandwidth, scaleBand, scaleLinear, scaled)
 import VISX.Shape as Shape
 import VISX.Util.Data.MockData (letterFrequency)
-import VISX.Util.SVG.Gradient (gradientTealBlueImpl)
+import VISX.Util.SVG.Gradient (gradientTealBlue)
 import VISX.Util.SVG.Group (group) as VISX
 
 default ∷ { title ∷ String }
@@ -113,7 +113,7 @@ mkExample = do
           { width: show $ width + leftPadding
           , height: show height
           , children:
-              [ element gradientTealBlueImpl { id: "bg-gradient" }
+              [ element gradientTealBlue { id: "bg-gradient" }
               , R.rect
                   { rx: "20"
                   , width: show $ width

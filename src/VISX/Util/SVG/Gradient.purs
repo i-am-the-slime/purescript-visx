@@ -3,26 +3,26 @@ module VISX.Util.SVG.Gradient where
 
 import React.Basic (ReactComponent)
 
-foreign import linearGradientImpl ∷ ∀ a. ReactComponent { id ∷ String | a }
+foreign import linearGradient ∷ ∀ a. ReactComponent { id ∷ String, from ∷ String, to ∷ String | a }
 
-foreign import radialGradientImpl ∷ ∀ a. ReactComponent { id ∷ String | a }
+foreign import radialGradient ∷ ∀ a. ReactComponent { id ∷ String, from ∷ String, to ∷ String | a }
 
-foreign import gradientDarkgreenGreenImpl ∷ ∀ a. ReactComponent { id ∷ String | a }
+foreign import gradientDarkgreenGreen ∷ ∀ a. ReactComponent { id ∷ String | a }
 
-foreign import gradientLightgreenGreenImpl ∷ ∀ a. ReactComponent { id ∷ String | a }
+foreign import gradientLightgreenGreen ∷ ∀ a. ReactComponent { id ∷ String | a }
 
-foreign import gradientOrangeRedImpl ∷ ∀ a. ReactComponent { id ∷ String | a }
+foreign import gradientOrangeRed ∷ ∀ a. ReactComponent { id ∷ String | a }
 
-foreign import gradientPinkBlueImpl ∷ ∀ a. ReactComponent { id ∷ String | a }
+foreign import gradientPinkBlue ∷ ∀ a. ReactComponent { id ∷ String | a }
 
-foreign import gradientPinkRedImpl ∷ ∀ a. ReactComponent { id ∷ String | a }
+foreign import gradientPinkRed ∷ ∀ a. ReactComponent { id ∷ String | a }
 
-foreign import gradientPurpleOrangeImpl ∷ ∀ a. ReactComponent { id ∷ String | a }
+foreign import gradientPurpleOrange ∷ ∀ a. ReactComponent { id ∷ String | a }
 
-foreign import gradientPurpleRedImpl ∷ ∀ a. ReactComponent { id ∷ String | a }
+foreign import gradientPurpleRed ∷ ∀ a. ReactComponent { id ∷ String | a }
 
-foreign import gradientPurpleTealImpl ∷ ∀ a. ReactComponent { id ∷ String | a }
+foreign import gradientPurpleTeal ∷ ∀ a. ReactComponent { id ∷ String | a }
 
-foreign import gradientSteelPurpleImpl ∷ ∀ a. ReactComponent { id ∷ String | a }
+foreign import gradientSteelPurple ∷ ∀ a. ReactComponent { id ∷ String | a }
 
-foreign import gradientTealBlueImpl ∷ ∀ a. ReactComponent { id ∷ String | a }
+foreign import gradientTealBlue ∷ ∀ a. ReactComponent { id ∷ String | a }

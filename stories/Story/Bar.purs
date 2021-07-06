@@ -11,7 +11,7 @@ import React.Basic (JSX, element)
 import React.Basic.DOM.SVG as R
 import React.Basic.Hooks (Component, useEffect)
 import React.Basic.Hooks as React
-import VISX.Util.SVG.Gradient (gradientTealBlueImpl)
+import VISX.Util.SVG.Gradient (gradientTealBlue)
 import VISX.Scale (BandScale, LinearScale, bandwidth, scaleBand, scaleLinear, scaled)
 import VISX.Shape as Shape
 import VISX.Util.Data.MockData (letterFrequency)
@@ -70,7 +70,7 @@ mkExample = do
           { width: show width
           , height: show height
           , children:
-              [ element gradientTealBlueImpl { id: "bg-gradient" }
+              [ element gradientTealBlue { id: "bg-gradient" }
               , R.rect
                   { rx: "20"
                   , width: show width
