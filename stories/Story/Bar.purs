@@ -34,11 +34,13 @@ mkExample = do
       barX ← xScale # scaled letter
       let barY = yMax - barHeight
       pure
-        $ element Shape.bar
+        $ element Shape.barRounded
             { width: barWidth
             , height: barHeight
             , x: barX
             , y: barY
+            , radius: 4
+            , top: 2
             , fill: "rgba(120, 230, 250, 0.6)"
             }
   React.component "Bar Example" \{ width, height } → React.do

@@ -36,16 +36,18 @@ bar = barImpl
 foreign import barRoundedImpl ∷ ∀ r. ReactComponent { | r }
 
 type BarRoundedProps
-  = BarPropsCommon ( all ∷ Int
-    , top ∷ Int
-    , right ∷ Int
-    , bottom ∷ Int
-    , left ∷ Int
-    , topRight ∷ Int
-    , bottomRight ∷ Int
-    , bottomLeft ∷ Int
-    , topLeft ∷ Int
-    )
+  = BarPropsCommon
+      ( radius ∷ Int
+      , all ∷ Int
+      , top ∷ Int
+      , right ∷ Int
+      , bottom ∷ Int
+      , left ∷ Int
+      , topRight ∷ Int
+      , bottomRight ∷ Int
+      , bottomLeft ∷ Int
+      , topLeft ∷ Int
+      )
 
 barRounded ∷
   ∀ attrs attrs_.
@@ -53,6 +55,7 @@ barRounded ∷
   ReactComponent
     { width ∷ Number
     , height ∷ Number
+    , radius ∷ Int
     , x ∷ Number
     , y ∷ Number
     | attrs
