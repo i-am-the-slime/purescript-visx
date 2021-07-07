@@ -1,4 +1,14 @@
-module VISX.Util.Data.Responsive where
+module VISX.Util.Data.Responsive
+  ( ParentSizeProps
+  , ParentSizeState
+  , RenderParentSizeChildren
+  , ScaleSVGProps
+  , parentSize
+  , scaleSVG
+  , withParentSize
+  , withParentSizeModern
+  , withScreenSize
+  ) where
 
 import Prelude
 import Data.Nullable (Nullable)
@@ -19,7 +29,7 @@ scaleSVG = scaleSVGImpl
 foreign import scaleSVGImpl ∷ ∀ r. ReactComponent { | r }
 
 type ScaleSVGProps
-  = ( children ∷ JSX
+  = ( children ∷ Array JSX
     , height ∷ Number
     , width ∷ Number
     , innerRef ∷ ∀ ref. Ref ref
@@ -40,7 +50,11 @@ type ParentSizeState
   = ( width ∷ Number, height ∷ Number, top ∷ Number, left ∷ Number )
 
 type RenderParentSizeChildren
-  = { ref ∷ Nullable (Ref Node), resize ∷ EffectFn1 { | ParentSizeState } Unit | ParentSizeState } → Array JSX
+  = { ref ∷ Nullable (Ref Node)
+    , resize ∷ EffectFn1 { | ParentSizeState } Unit
+    | ParentSizeState
+    } →
+    Array JSX
 
 type ParentSizeProps
   = ( children ∷ RenderParentSizeChildren
