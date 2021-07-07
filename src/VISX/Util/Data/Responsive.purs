@@ -19,7 +19,7 @@ scaleSVG = scaleSVGImpl
 foreign import scaleSVGImpl ∷ ∀ r. ReactComponent { | r }
 
 type ScaleSVGProps
-  = ( children ∷ Array JSX
+  = ( children ∷ JSX
     , height ∷ Number
     , width ∷ Number
     , innerRef ∷ ∀ ref. Ref ref
