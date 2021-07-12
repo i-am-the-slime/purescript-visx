@@ -54,7 +54,7 @@ type RenderParentSizeChildren
     , resize ∷ EffectFn1 { | ParentSizeState } Unit
     | ParentSizeState
     } →
-    Array JSX
+    JSX
 
 type ParentSizeProps
   = ( children ∷ RenderParentSizeChildren
