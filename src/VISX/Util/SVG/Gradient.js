@@ -1,6 +1,6 @@
 const gradient = require("@visx/gradient")
 
-exports.linearGradient = gradient.LinearGradient
+exports.linearGradientImpl = gradient.LinearGradient
 exports.radialGradient = gradient.RadialGradient
 exports.gradientDarkgreenGreen = gradient.GradientDarkgreenGreen
 exports.gradientLightgreenGreen = gradient.GradientLightgreenGreen

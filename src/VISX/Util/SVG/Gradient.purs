@@ -1,10 +1,19 @@
 -- [TODO] Specify props
 module VISX.Util.SVG.Gradient where
 
+import Prim.Row (class Union)
 import React.Basic (ReactComponent)
 
-foreign import linearGradient ∷ ∀ a. ReactComponent { id ∷ String, rotate :: String, from ∷ String, to ∷ String | a }
-foreign import radialGradient ∷ ∀ a. ReactComponent { id ∷ String, rotate :: String, from ∷ String, to ∷ String | a }
+type LinearGradientRequiredProps r
+  = ( id ∷ String, from ∷ String, to ∷ String | r )
+type LinearGradientProps
+  = LinearGradientRequiredProps ( rotate ∷ String )
+
+foreign import linearGradientImpl ∷ ∀ a. ReactComponent a
+linearGradient ∷ ∀ attrs attrs_. Union attrs attrs_ LinearGradientProps ⇒ ReactComponent { | LinearGradientRequiredProps attrs }
+linearGradient = linearGradientImpl
+
+foreign import radialGradient ∷ ∀ a. ReactComponent { id ∷ String, rotate ∷ String, from ∷ String, to ∷ String | a }
 foreign import gradientDarkgreenGreen ∷ ∀ a. ReactComponent { id ∷ String | a }
 foreign import gradientLightgreenGreen ∷ ∀ a. ReactComponent { id ∷ String | a }
 foreign import gradientOrangeRed ∷ ∀ a. ReactComponent { id ∷ String | a }
