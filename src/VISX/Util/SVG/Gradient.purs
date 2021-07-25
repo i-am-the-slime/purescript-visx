@@ -3,8 +3,8 @@ module VISX.Util.SVG.Gradient where
 
 import React.Basic (ReactComponent)
 
-foreign import linearGradient ∷ ∀ a. ReactComponent { id ∷ String, from ∷ String, to ∷ String | a }
-foreign import radialGradient ∷ ∀ a. ReactComponent { id ∷ String, from ∷ String, to ∷ String | a }
+foreign import linearGradient ∷ ∀ a. ReactComponent { id ∷ String, rotate :: String, from ∷ String, to ∷ String | a }
+foreign import radialGradient ∷ ∀ a. ReactComponent { id ∷ String, rotate :: String, from ∷ String, to ∷ String | a }
 foreign import gradientDarkgreenGreen ∷ ∀ a. ReactComponent { id ∷ String | a }
 foreign import gradientLightgreenGreen ∷ ∀ a. ReactComponent { id ∷ String | a }
 foreign import gradientOrangeRed ∷ ∀ a. ReactComponent { id ∷ String | a }
