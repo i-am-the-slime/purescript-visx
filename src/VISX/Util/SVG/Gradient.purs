@@ -1,5 +1,20 @@
 -- [TODO] Specify props
-module VISX.Util.SVG.Gradient where
+module VISX.Util.SVG.Gradient
+  ( LinearGradientProps
+  , LinearGradientRequiredProps
+  , gradientDarkgreenGreen
+  , gradientLightgreenGreen
+  , gradientOrangeRed
+  , gradientPinkBlue
+  , gradientPinkRed
+  , gradientPurpleOrange
+  , gradientPurpleRed
+  , gradientPurpleTeal
+  , gradientSteelPurple
+  , gradientTealBlue
+  , linearGradient
+  , radialGradient
+  ) where
 
 import Prim.Row (class Union)
 import React.Basic (ReactComponent)
