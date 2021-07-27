@@ -22,6 +22,7 @@ to generate this file without the comments in this block.
   , "foreign"
   , "foreign-object"
   , "functions"
+  , "integers"
   , "justifill"
   , "lists"
   , "maybe"
