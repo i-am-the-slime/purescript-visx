@@ -1,4 +1,4 @@
-module VISX.Shape (bar, barRounded, linePath) where
+module VISX.Shape where
 
 import Prim.Row (class Union)
 import React.Basic (ReactComponent)
@@ -96,3 +96,16 @@ linePath ∷
     | attrs
     }
 linePath = linePathImpl
+
+foreign import arcImpl ∷ ∀ r. ReactComponent r
+foreign import pieImpl ∷ ∀ r. ReactComponent r
+foreign import lineImpl ∷ ∀ r. ReactComponent r
+foreign import lineRadialImpl ∷ ∀ r. ReactComponent r
+foreign import areaImpl ∷ ∀ r. ReactComponent r
+foreign import areaClosedImpl ∷ ∀ r. ReactComponent r
+foreign import areaStackImpl ∷ ∀ r. ReactComponent r
+foreign import barGroupImpl ∷ ∀ r. ReactComponent r
+foreign import barGroupHorizontalImpl ∷ ∀ r. ReactComponent r
+foreign import barStackImpl ∷ ∀ r. ReactComponent r
+foreign import barStackHorizontalImpl ∷ ∀ r. ReactComponent r
+foreign import stackImpl ∷ ∀ r. ReactComponent r

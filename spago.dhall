@@ -35,10 +35,12 @@ to generate this file without the comments in this block.
   , "react-basic-dom"
   , "react-basic-hooks"
   , "record"
+  , "record-extra"
   , "transformers"
   , "tuples"
   , "typelevel-prelude"
   , "unsafe-coerce"
+  , "untagged-union"
   , "web-dom"
   ]
 , packages = ./packages.dhall

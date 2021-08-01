@@ -1,9 +1,10 @@
-{ "editor.formatOnSave": true,
-	"files.exclude": {
-		".spago": true,
-		"node_modules": true,
-		"output": true
+{
+  "editor.formatOnSave": true,
+  "files.exclude": {
+    ".spago": true,
+    "node_modules": true,
+    "output": true
   },
   "purescript.buildCommand": "spago -x stories.dhall build --purs-args --json-errors",
-  "workbench.colorTheme": "Horizon"
+  "workbench.colorTheme": "NetBeans Light Theme"
 }
