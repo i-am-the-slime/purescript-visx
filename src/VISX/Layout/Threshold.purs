@@ -1,3 +1,5 @@
 module VISX.Layout.Threshold where
 
-import Prelude
+import React.Basic (ReactComponent)
+
+foreign import thresholdImpl ∷ ∀ a. ReactComponent a

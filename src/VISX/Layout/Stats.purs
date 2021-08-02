@@ -1,3 +1,6 @@
 module VISX.Layout.Stats where
 
-import Prelude
+import React.Basic (ReactComponent)
+
+foreign import boxPlotImpl ∷ ∀ a. ReactComponent a
+foreign import violinPlotImpl ∷ ∀ a. ReactComponent a
