@@ -2,6 +2,7 @@ module VISX.Shape where
 
 import Prim.Row (class Union)
 import React.Basic (ReactComponent)
+import React.Basic.DOM.SVG (Props_rect)
 import React.Basic.Events (EventHandler)
 import VISX.Curve (CurveType)
 
@@ -17,7 +18,7 @@ type BarPropsCommon r
     )
 
 type BarProps
-  = BarPropsCommon ()
+  = BarPropsCommon Props_rect
 
 foreign import barImpl ∷ ∀ r. ReactComponent { | r }
 
