@@ -3,6 +3,8 @@ module VISX.Scale
   , scaled
   , LinearScale
   , scaleLinear
+  , TimeScale
+  , scaleTime
   , QuantizeScale
   , scaleQuantize
   , OrdinalScale
