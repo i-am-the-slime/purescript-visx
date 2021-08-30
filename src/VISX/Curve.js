@@ -1,4 +1,20 @@
-const curve = require("@visx/curve")
+const curve = require("@visx/curve");
 
-exports.curveBasis = curve.curveBasis
-exports.curveNatural = curve.curveNatural
+exports.curveBasis = curve.curveBasis;
+exports.curveBasisClosed = curve.curveBasisClosed;
+exports.curveBasisOpen = curve.curveBasisOpen;
+exports.curveStep = curve.curveStep;
+exports.curveStepAfter = curve.curveStepAfter;
+exports.curveStepBefore = curve.curveStepBefore;
+exports.curveBundle = curve.curveBundle;
+exports.curveLinear = curve.curveLinear;
+exports.curveLinearClosed = curve.curveLinearClosed;
+exports.curveCardinal = curve.curveCardinal;
+exports.curveCardinalClosed = curve.curveCardinalClosed;
+exports.curveCardinalOpen = curve.curveCardinalOpen;
+exports.curveCatmullRom = curve.curveCatmullRom;
+exports.curveCatmullRomClosed = curve.curveCatmullRomClosed;
+exports.curveCatmullRomOpen = curve.curveCatmullRomOpen;
+exports.curveMonotoneX = curve.curveMonotoneX;
+exports.curveMonotoneY = curve.curveMonotoneY;
+exports.curveNatural = curve.curveNatural;
