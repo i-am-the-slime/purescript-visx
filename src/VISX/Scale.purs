@@ -17,7 +17,6 @@ module VISX.Scale
 import Prelude
 import Data.Array.NonEmpty (NonEmptyArray)
 import Data.Array.NonEmpty as NEA
-import Data.Function (flip)
 import Data.JSDate (JSDate)
 import Data.Maybe (Maybe)
 import Data.Tuple (Tuple)
@@ -25,7 +24,6 @@ import Data.Tuple.Nested (type (/\), (/\))
 import Effect (Effect)
 import Foreign (Foreign)
 import Prim.Row (class Lacks)
-import Prim.RowList (class RowToList)
 import Record.Builder as Builder
 import Type.Proxy (Proxy(..))
 import VISX.FFI (class Options, class WriteForeign, toOptions)
