@@ -16,6 +16,7 @@ import Prelude
 import Data.Array.NonEmpty (NonEmptyArray)
 import Data.Array.NonEmpty as NEA
 import Data.Function (flip)
+import Data.JSDate (JSDate)
 import Data.Maybe (Maybe)
 import Data.Tuple (Tuple)
 import Data.Tuple.Nested (type (/\), (/\))
@@ -67,6 +68,29 @@ scaleLinear ∷
 scaleLinear config =
   scaleLinearImpl
     (FFI.write (toOptions config ∷ LinearScaleConfig))
+
+-- Time Scale
+foreign import data TimeScale ∷ Type → Type → Type
+instance Scale (TimeScale a b)
+
+type TimeScaleConfig
+  = { domain ∷ JSDate /\ JSDate
+    , range ∷ Number /\ Number
+    , round ∷ Maybe Boolean
+    , nice ∷ Maybe Boolean
+    , clamp ∷ Maybe Boolean
+    }
+
+foreign import scaleTimeImpl ∷ ∀ a. Foreign → TimeScale Number a
+
+scaleTime ∷
+  ∀ opt.
+  Options opt TimeScaleConfig ⇒
+  opt →
+  TimeScale Number _
+scaleTime config =
+  scaleTimeImpl
+    (FFI.write (toOptions config ∷ TimeScaleConfig))
 
 -- Band Scale
 foreign import data BandScale ∷ Type → Type → Type
