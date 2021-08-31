@@ -7,8 +7,12 @@ foreign import data D3TimeFormat ∷ Type
 
 foreign import timeFormat ∷ String → D3TimeFormat
 
-newtype D3TimeFormatLocale
-  = D3TimeFormatLocale
+foreign import data D3TimeFormatLocale ∷ Type
+
+foreign import timeFormatLocale ∷ D3TimeFormatLocaleDefinition → D3TimeFormatLocale
+
+newtype D3TimeFormatLocaleDefinition
+  = D3TimeFormatLocaleDefinition
   { dateTime ∷ String
   , date ∷ String
   , time ∷ String
