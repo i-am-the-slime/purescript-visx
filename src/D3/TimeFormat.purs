@@ -23,7 +23,7 @@ newtype D3TimeFormatLocaleDefinition
   , shortMonths ∷ Array String
   }
 
-foreign import localeTimeFormat ∷ D3TimeFormatLocale → String → D3TimeFormat
+foreign import localeTimeFormat ∷ String → D3TimeFormatLocale → D3TimeFormat
 
 toD3Format ∷ D3TimeFormat → D3Format
 toD3Format = unsafeCoerce
