@@ -17,23 +17,23 @@ type TooltipData
   = {}
 
 type UseTooltipValuesImpl a
-  = { hideTooltip ∷ UndefinedOr (Effect Unit)
-    , showTooltip ∷ UndefinedOr (EffectFn1 TooltipPosition Unit)
+  = { hideTooltip ∷ Effect Unit
+    , showTooltip ∷ EffectFn1 TooltipPosition Unit
     , tooltipData ∷ UndefinedOr a
     , tooltipLeft ∷ UndefinedOr Number
-    , tooltipOpen ∷ UndefinedOr Boolean
+    , tooltipOpen ∷ Boolean
     , tooltipTop ∷ UndefinedOr Number
-    , updateTooltip ∷ UndefinedOr (EffectFn1 TooltipPosition Unit)
+    , updateTooltip ∷ EffectFn1 TooltipPosition Unit
     }
 
 type UseTooltipValues a
-  = { hideTooltip ∷ Maybe (Effect Unit)
-    , showTooltip ∷ Maybe (TooltipPosition → Effect Unit)
+  = { hideTooltip ∷ Effect Unit
+    , showTooltip ∷ TooltipPosition → Effect Unit
     , tooltipData ∷ Maybe a
     , tooltipLeft ∷ Maybe Number
-    , tooltipOpen ∷ Maybe Boolean
+    , tooltipOpen ∷ Boolean
     , tooltipTop ∷ Maybe Number
-    , updateTooltip ∷ Maybe (TooltipPosition → Effect Unit)
+    , updateTooltip ∷ TooltipPosition → Effect Unit
     }
 
 foreign import useTooltipImpl ∷ ∀ a. Effect (UseTooltipValuesImpl a)
@@ -43,13 +43,13 @@ useTooltip ∷ ∀ a. Hook (UseTooltip a) (UseTooltipValues a)
 useTooltip =
   unsafeHook useTooltipImpl
     <#> \baseProps →
-        { hideTooltip: uorToMaybe baseProps.hideTooltip
-        , showTooltip: uorToMaybe baseProps.showTooltip <#> runEffectFn1
+        { hideTooltip: baseProps.hideTooltip
+        , showTooltip: baseProps.showTooltip # runEffectFn1
         , tooltipData: uorToMaybe baseProps.tooltipData
         , tooltipLeft: uorToMaybe baseProps.tooltipLeft
-        , tooltipOpen: uorToMaybe baseProps.tooltipOpen
+        , tooltipOpen: baseProps.tooltipOpen
         , tooltipTop: uorToMaybe baseProps.tooltipTop
-        , updateTooltip: uorToMaybe baseProps.updateTooltip <#> runEffectFn1
+        , updateTooltip: baseProps.updateTooltip # runEffectFn1
         }
 
 -- useTooltipInPortal ∷ ∀ a. Hook (UseTooltip a) (Maybe (UseTooltipValues a))
