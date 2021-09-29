@@ -1,6 +1,7 @@
 module VISX.Scale
   ( class Scale
   , scaled
+  , invert
   , LinearScale
   , scaleLinear
   , TimeScale
@@ -45,6 +46,20 @@ scaled ∷
   scale domain range →
   Effect range
 scaled = flip scaleValueImpl
+
+foreign import invertValueImpl ∷
+  ∀ scale domain range.
+  scale →
+  range →
+  Effect domain
+
+invert ∷
+  ∀ scale domain range.
+  Scale (scale domain range) ⇒
+  range →
+  scale domain range →
+  Effect domain
+invert = flip invertValueImpl
 
 -- Linear Scale
 foreign import data LinearScale ∷ Type → Type → Type
