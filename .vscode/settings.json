@@ -6,5 +6,5 @@
     "output": true
   },
   "purescript.buildCommand": "spago -x stories.dhall build --purs-args --json-errors",
-  "workbench.colorTheme": "NetBeans Light Theme"
+  "workbench.colorTheme": "Halcyon"
 }
