@@ -23,6 +23,7 @@ to generate this file without the comments in this block.
   , "foreign-object"
   , "functions"
   , "integers"
+  , "js-date"
   , "justifill"
   , "lists"
   , "maybe"
