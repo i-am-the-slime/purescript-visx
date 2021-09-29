@@ -1,9 +1,10 @@
 module D3.Format where
 
 import Prelude
-import Unsafe.Coerce (unsafeCoerce)
-import Effect (Effect)
 import Data.Int (toNumber)
+import Data.JSDate (JSDate)
+import Effect (Effect)
+import Unsafe.Coerce (unsafeCoerce)
 
 foreign import data D3Format ∷ Type
 
@@ -16,3 +17,7 @@ formatNumber formatFn n =
 formatInt ∷ D3Format → Int → Effect String
 formatInt formatFn i =
   pure $ ((unsafeCoerce formatFn) ∷ Number → String) (toNumber i)
+
+formatDate ∷ D3Format → JSDate → Effect String
+formatDate formatFn i =
+  pure $ ((unsafeCoerce formatFn) ∷ JSDate → String) i
