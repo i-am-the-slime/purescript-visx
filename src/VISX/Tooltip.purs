@@ -6,34 +6,31 @@ import Effect (Effect)
 import Effect.Uncurried (EffectFn1, runEffectFn1)
 import Foreign (Foreign)
 import React.Basic.Hooks (Hook, ReactComponent, unsafeHook)
-import Record.Extra (sequenceRecord)
 import Untagged.Union (UndefinedOr, uorToMaybe)
 
 foreign import data UseTooltip ∷ Type → Type → Type
 
-foreign import data TooltipPosition ∷ Type
-
-type TooltipData
-  = {}
+type TooltipPayload a
+  = { tooltipData ∷ a, tooltipLeft ∷ Number, tooltipTop ∷ Number }
 
 type UseTooltipValuesImpl a
   = { hideTooltip ∷ Effect Unit
-    , showTooltip ∷ EffectFn1 TooltipPosition Unit
+    , showTooltip ∷ EffectFn1 (TooltipPayload a) Unit
     , tooltipData ∷ UndefinedOr a
     , tooltipLeft ∷ UndefinedOr Number
     , tooltipOpen ∷ Boolean
     , tooltipTop ∷ UndefinedOr Number
-    , updateTooltip ∷ EffectFn1 TooltipPosition Unit
+    , updateTooltip ∷ EffectFn1 (TooltipPayload a) Unit
     }
 
 type UseTooltipValues a
   = { hideTooltip ∷ Effect Unit
-    , showTooltip ∷ TooltipPosition → Effect Unit
+    , showTooltip ∷ TooltipPayload a → Effect Unit
     , tooltipData ∷ Maybe a
     , tooltipLeft ∷ Maybe Number
     , tooltipOpen ∷ Boolean
     , tooltipTop ∷ Maybe Number
-    , updateTooltip ∷ TooltipPosition → Effect Unit
+    , updateTooltip ∷ TooltipPayload a → Effect Unit
     }
 
 foreign import useTooltipImpl ∷ ∀ a. Effect (UseTooltipValuesImpl a)
