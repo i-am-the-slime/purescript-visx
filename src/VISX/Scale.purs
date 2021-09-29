@@ -96,13 +96,13 @@ type TimeScaleConfig
     , clamp ∷ Maybe Boolean
     }
 
-foreign import scaleTimeImpl ∷ ∀ a. Foreign → TimeScale Number a
+foreign import scaleTimeImpl ∷ ∀ a. Foreign → TimeScale JSDate a
 
 scaleTime ∷
   ∀ opt.
   Options opt TimeScaleConfig ⇒
   opt →
-  TimeScale Number _
+  TimeScale JSDate _
 scaleTime config =
   scaleTimeImpl
     (FFI.write (toOptions config ∷ TimeScaleConfig))
