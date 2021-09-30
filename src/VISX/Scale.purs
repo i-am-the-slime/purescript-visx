@@ -33,32 +33,22 @@ import VISX.FFI as FFI
 class Scale ∷ ∀ k. k → Constraint
 class Scale scale
 
-foreign import scaleValueImpl ∷
-  ∀ scale domain range.
-  scale →
-  domain →
-  Effect range
+foreign import scaleValueImpl ∷ ∀ scale domain range. scale → domain → range
 
 scaled ∷
   ∀ scale domain range.
   Scale (scale domain range) ⇒
-  domain →
-  scale domain range →
-  Effect range
+  domain → scale domain range → range
 scaled = flip scaleValueImpl
 
-foreign import invertValueImpl ∷
-  ∀ scale domain range.
-  scale →
-  range →
-  Effect domain
+foreign import invertValueImpl ∷ ∀ scale domain range. scale → range → domain
 
 invert ∷
   ∀ scale domain range.
   Scale (scale domain range) ⇒
   range →
   scale domain range →
-  Effect domain
+  domain
 invert = flip invertValueImpl
 
 -- Linear Scale

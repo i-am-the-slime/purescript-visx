@@ -34,24 +34,10 @@ type UseTooltipValues a
     }
 
 foreign import useTooltipImpl ∷ ∀ a. Effect (UseTooltipValuesImpl a)
-foreign import useTooltipInPortalImpl ∷ ∀ a. Effect (UseTooltipValuesImpl a)
 
 useTooltip ∷ ∀ a. Hook (UseTooltip a) (UseTooltipValues a)
 useTooltip =
   unsafeHook useTooltipImpl
-    <#> \baseProps →
-        { hideTooltip: baseProps.hideTooltip
-        , showTooltip: baseProps.showTooltip # runEffectFn1
-        , tooltipData: uorToMaybe baseProps.tooltipData
-        , tooltipLeft: uorToMaybe baseProps.tooltipLeft
-        , tooltipOpen: baseProps.tooltipOpen
-        , tooltipTop: uorToMaybe baseProps.tooltipTop
-        , updateTooltip: baseProps.updateTooltip # runEffectFn1
-        }
-
-useTooltipInPortal ∷ ∀ a. Hook (UseTooltip a) (UseTooltipValues a)
-useTooltipInPortal =
-  unsafeHook useTooltipInPortalImpl
     <#> \baseProps →
         { hideTooltip: baseProps.hideTooltip
         , showTooltip: baseProps.showTooltip # runEffectFn1

@@ -9,5 +9,5 @@ exports.scaleTimeImpl = scale.scaleTime;
 
 exports.bandwidth = (bandScale) => bandScale.bandwidth;
 
-exports.scaleValueImpl = (scale) => (x) => () => scale(x);
-exports.invertValueImpl = (scale) => (x) => () => scale.invert(x);
+exports.scaleValueImpl = (scale) => (x) => scale(x);
+exports.invertValueImpl = (scale) => (x) => scale.invert(x);
