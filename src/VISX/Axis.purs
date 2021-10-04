@@ -14,6 +14,7 @@ module VISX.Axis
 
 import D3.Format (D3Format)
 import Data.Function.Uncurried (Fn2)
+import Effect.Uncurried (EffectFn1)
 import Prim.Row (class Union)
 import React.Basic (JSX, ReactComponent)
 import React.Basic.DOM.SVG (Props_text)
@@ -53,7 +54,7 @@ type AxisProps r domain codomain
     , strokeWidth ∷ String
     , tickClassName ∷ String
     , tickComponent ∷ TickRendererProps → JSX
-    , tickFormat ∷ domain → String
+    , tickFormat ∷ EffectFn1 domain String
     , tickLabelProps ∷ Fn2 domain Int LabelProps
     , tickLength ∷ Number
     , ticksComponent ∷ TickRendererProps → JSX
