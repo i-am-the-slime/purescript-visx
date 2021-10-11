@@ -54,7 +54,7 @@ type AxisProps r domain codomain
     , strokeWidth ∷ String
     , tickClassName ∷ String
     , tickComponent ∷ TickRendererProps → JSX
-    , tickFormat ∷ EffectFn1 domain String
+    , tickFormat ∷ domain → String
     , tickLabelProps ∷ Fn2 domain Int LabelProps
     , tickLength ∷ Number
     , ticksComponent ∷ TickRendererProps → JSX
