@@ -10,7 +10,8 @@ foreign import data D3Format ∷ Type
 foreign import format ∷ String → D3Format
 
 formatWhatever ∷ ∀ a. D3Format → a → String
-formatWhatever d3f s = unsafeCoerce (format (unsafeCoerce s)) d3f
+formatWhatever formatFn s =
+  (unsafeCoerce formatFn) (unsafeCoerce s)
 
 formatNumber ∷ D3Format → Number → String
 formatNumber formatFn n =
