@@ -1,4 +1,8 @@
-const d3TimeFormat = require("d3-time-format");
+var d3TimeFormat = _interopRequireDefault(require("d3-time-format"));
+
+function _interopRequireDefault(obj) {
+  return obj && obj.__esModule ? obj : { default: obj };
+}
 
 exports.timeFormat = d3TimeFormat.timeFormat;
 
