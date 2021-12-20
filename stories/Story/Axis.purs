@@ -36,13 +36,13 @@ mkExample = do
 
     mkBar { yMax, xScale, yScale } { letter, frequency } = do
       barWidth ← bandwidth xScale
-      barHeight ← (yMax - _) <$> (yScale # scaled frequency)
-      barX ← xScale # scaled letter
+      let barHeight = (yMax - _) $ (yScale # scaled frequency)
+      let barX = xScale # scaled letter
       let barY = yMax - barHeight
       pure
         $ element Shape.bar
-            { width: barWidth
-            , height: barHeight
+            { width: barWidth :: Number
+            , height: barHeight :: Number
             , x: barX
             , y: barY
             , fill: "rgba(120, 230, 250, 0.6)"
@@ -95,7 +95,7 @@ mkExample = do
           , orientation: "left"
           , stroke: "rgba(255,255,255,0.9)"
           , tickStroke: "rgba(255,255,255,0.9)"
-          , tickFormat: D3.format ".0%"
+          -- , tickFormat: D3.format ".0%"
           , numTicks: 5
           , hideZero: true
           , tickLabelProps:

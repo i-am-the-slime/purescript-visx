@@ -21,11 +21,9 @@ import React.Basic.DOM.SVG (Props_text)
 import Unsafe.Coerce (unsafeCoerce)
 import VISX.Scale (class Scale)
 
-type AxisRendererProps
-  = {}
+type AxisRendererProps = {}
 
-type TickRendererProps
-  = {}
+type TickRendererProps = {}
 
 foreign import data LabelProps ∷ Type
 
@@ -33,41 +31,40 @@ labelProps ∷ ∀ attrs attrs_. Union attrs attrs_ Props_text ⇒ { | attrs } �
 labelProps = unsafeCoerce
 
 type AxisProps ∷ ∀ k. Row Type → Type → k → Row Type
-type AxisProps r domain codomain
-  = ( scale ∷ ∀ scale. scale domain codomain
-    , axisClassName ∷ String
-    , axisLineClassName ∷ String
-    , children ∷ AxisRendererProps → JSX
-    , hideAxisLine ∷ Boolean
-    , hideTicks ∷ Boolean
-    , hideZero ∷ Boolean
-    , label ∷ String
-    , labelClassName ∷ String
-    , labelOffset ∷ Number
-    , labelProps ∷ LabelProps
-    , left ∷ Number
-    , numTicks ∷ Int
-    , orientation ∷ String
-    , rangePadding ∷ Number
-    , stroke ∷ String
-    , strokeDasharray ∷ String
-    , strokeWidth ∷ String
-    , tickClassName ∷ String
-    , tickComponent ∷ TickRendererProps → JSX
-    , tickFormat ∷ domain → String
-    , tickLabelProps ∷ Fn2 domain Int LabelProps
-    , tickLength ∷ Number
-    , ticksComponent ∷ TickRendererProps → JSX
-    , tickStroke ∷ String
-    , tickTransform ∷ String
-    -- , tickValues :: NoIdea
-    , top ∷ Number
-    | r
-    )
+type AxisProps r domain codomain =
+  ( scale ∷ ∀ scale. scale domain codomain
+  , axisClassName ∷ String
+  , axisLineClassName ∷ String
+  , children ∷ AxisRendererProps → JSX
+  , hideAxisLine ∷ Boolean
+  , hideTicks ∷ Boolean
+  , hideZero ∷ Boolean
+  , label ∷ String
+  , labelClassName ∷ String
+  , labelOffset ∷ Number
+  , labelProps ∷ LabelProps
+  , left ∷ Number
+  , numTicks ∷ Int
+  , orientation ∷ String
+  , rangePadding ∷ Number
+  , stroke ∷ String
+  , strokeDasharray ∷ String
+  , strokeWidth ∷ String
+  , tickClassName ∷ String
+  , tickComponent ∷ TickRendererProps → JSX
+  , tickFormat ∷ domain → String
+  , tickLabelProps ∷ Fn2 domain Int LabelProps
+  , tickLength ∷ Number
+  , ticksComponent ∷ TickRendererProps → JSX
+  , tickStroke ∷ String
+  , tickTransform ∷ String
+  -- , tickValues :: NoIdea
+  , top ∷ Number
+  | r
+  )
 
 type DefaultAxisProps ∷ ∀ k. Type → k → Row Type
-type DefaultAxisProps domain codomain
-  = AxisProps ( width ∷ String, height ∷ String, display ∷ String ) domain codomain
+type DefaultAxisProps domain codomain = AxisProps (width ∷ String, height ∷ String, display ∷ String) domain codomain
 
 axis ∷ ∀ scale domain codomain attrs attrs_. Scale (scale domain codomain) ⇒ Union attrs attrs_ (DefaultAxisProps domain codomain) ⇒ ReactComponent { scale ∷ scale domain codomain | attrs }
 axis = axisImpl

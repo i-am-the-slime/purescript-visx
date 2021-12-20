@@ -1,4 +1,8 @@
+const glob = require("fast-glob");
+
 module.exports = {
-  stories: ["../output/Story.*/index.js"],
+  stories: glob(["./output/Story.*/index.js"]).then((paths) =>
+    paths.map((p) => `.${p}`)
+  ),
   addons: [],
-}
+};

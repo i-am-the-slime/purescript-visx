@@ -1,6 +1,8 @@
 module Story.Bar (default, bar) where
 
 import Prelude
+
+import D3.TimeFormat (timeFormat)
 import Data.Array (foldMap)
 import Data.Newtype (ala)
 import Data.Ord.Max (Max(..))
@@ -11,17 +13,19 @@ import React.Basic (JSX, element)
 import React.Basic.DOM.SVG as R
 import React.Basic.Hooks (Component, useEffect)
 import React.Basic.Hooks as React
-import VISX.Util.SVG.Gradient (gradientTealBlue)
 import VISX.Scale (BandScale, LinearScale, bandwidth, scaleBand, scaleLinear, scaled)
 import VISX.Shape as Shape
 import VISX.Util.Data.MockData (letterFrequency)
+import VISX.Util.SVG.Gradient (gradientTealBlue)
 import VISX.Util.SVG.Group (group) as VISX
 
 default ∷ { title ∷ String }
 default = { title: "Bar" }
 
 bar ∷ Effect JSX
-bar = mkExample <@> { width: 700.0, height: 400.0 }
+bar = do
+  let _ = timeFormat ""
+  mkExample <@> { width: 700.0, height: 400.0 }
 
 mkExample ∷ Component { width ∷ Number, height ∷ Number }
 mkExample = do
@@ -30,8 +34,8 @@ mkExample = do
   let
     mkBar { yMax, xScale, yScale } { letter, frequency } = do
       barWidth ← bandwidth xScale
-      barHeight ← (yMax - _) <$> (yScale # scaled frequency)
-      barX ← xScale # scaled letter
+      let barHeight = (yMax - _) $ (yScale # scaled frequency)
+      let barX = xScale # scaled letter
       let barY = yMax - barHeight
       pure
         $ element Shape.barRounded
