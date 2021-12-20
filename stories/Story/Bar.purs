@@ -2,13 +2,17 @@ module Story.Bar (default, bar) where
 
 import Prelude
 
-import D3.TimeFormat (timeFormat)
+import D3.Format (formatDate)
+import D3.TimeFormat (timeFormat, toD3Format)
 import Data.Array (foldMap)
+import Data.JSDate as JSDate
 import Data.Newtype (ala)
 import Data.Ord.Max (Max(..))
 import Data.Traversable (for)
 import Data.Tuple.Nested ((/\))
+import Debug (spy)
 import Effect (Effect)
+import Effect.Unsafe (unsafePerformEffect)
 import React.Basic (JSX, element)
 import React.Basic.DOM.SVG as R
 import React.Basic.Hooks (Component, useEffect)
@@ -24,7 +28,6 @@ default = { title: "Bar" }
 
 bar ∷ Effect JSX
 bar = do
-  let _ = timeFormat ""
   mkExample <@> { width: 700.0, height: 400.0 }
 
 mkExample ∷ Component { width ∷ Number, height ∷ Number }
