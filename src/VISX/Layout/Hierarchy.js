@@ -1,8 +1,8 @@
-import * as hierarchy from "@visx/hierarchy";
+import { hierarchy as _hierarchy, Cluster, Pack, Partition, Tree, Treemap } from "@visx/hierarchy";
 
-export const hierarchy = hierarchy.hierarchy;
-export const clusterImpl = hierarchy.Cluster;
-export const packImpl = hierarchy.Pack;
-export const partitionImpl = hierarchy.Partition;
-export const treeImpl = hierarchy.Tree;
-export const treemapImpl = hierarchy.Treemap;
+export const hierarchy = _hierarchy;
+export const clusterImpl = Cluster;
+export const packImpl = Pack;
+export const partitionImpl = Partition;
+export const treeImpl = Tree;
+export const treemapImpl = Treemap;

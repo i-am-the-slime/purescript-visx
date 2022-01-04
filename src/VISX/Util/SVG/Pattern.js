@@ -1,8 +1,8 @@
-import * as pattern from "@visx/pattern"
+import { pattern as _pattern, PatternLines, PatternCircles, PatternWaves, PatternHexagons, PatternPath} from "@visx/pattern"
 
-exports.pattern = pattern.Pattern
-exports.patternLinesImpl = pattern.PatternLines
-exports.patternCirclesImpl = pattern.PatternCircles
-exports.patternWavesImpl = pattern.PatternWaves
-exports.patternHexagonsImpl = pattern.PatternHexagons
-exports.patternPathImpl = pattern.PatternPath
+exports.pattern = _pattern
+exports.patternLinesImpl = PatternLines
+exports.patternCirclesImpl = PatternCircles
+exports.patternWavesImpl = PatternWaves
+exports.patternHexagonsImpl = PatternHexagons
+exports.patternPathImpl = PatternPath
