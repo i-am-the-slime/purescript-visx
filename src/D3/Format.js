@@ -1,3 +1,3 @@
-import * as format from "d3-format";
+import * as d3Format from "d3-format";
 
-export const format = format.format;
+export const format = d3Format.format;
