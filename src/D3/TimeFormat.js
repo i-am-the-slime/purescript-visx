@@ -1,11 +1,11 @@
-import { timeFormat, timeFormatLocale } from "d3-time-format";
+import * as timeFormat from "d3-time-format";
 
-export const timeFormat = timeFormat;
+export const timeFormat = timeFormat.timeFormat;
 
 export function localeTimeFormat(str) {
   return (locale) => locale.format(str);
 }
 
 export function timeFormatLocale(def) {
-  return timeFormatLocale(def);
+  return timeFormat.timeFormatLocale(def);
 }

@@ -26,7 +26,7 @@ type UseTooltipValuesImpl a
 type UseTooltipValues a
   = { hideTooltip ∷ Effect Unit
     , showTooltip ∷ TooltipPayload a → Effect Unit
-    , tooltipData ∷ Maybe a
+   , tooltipData ∷ Maybe a
     , tooltipLeft ∷ Maybe Number
     , tooltipOpen ∷ Boolean
     , tooltipTop ∷ Maybe Number
