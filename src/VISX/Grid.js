@@ -1,8 +1,8 @@
-const grid = require("@visx/grid")
+import { GridColumns, GridRows, Grid, GridRadial, GridPolar, GridAngle } from "@visx/grid"
 
-exports.gridColumnsImpl = grid.GridColumns
-exports.gridRowsImpl = grid.GridRows
-exports.gridImpl = grid.Grid
-exports.gridRadialImpl = grid.GridRadial
-exports.gridPolarImpl = grid.GridPolar
-exports.gridAngleImpl = grid.GridAngle
+export const gridColumnsImpl = GridColumns
+export const gridRowsImpl = GridRows
+export const gridImpl = Grid
+export const gridRadialImpl = GridRadial
+export const gridPolarImpl = GridPolar
+export const gridAngleImpl = GridAngle

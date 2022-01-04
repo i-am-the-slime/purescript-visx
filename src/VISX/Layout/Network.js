@@ -1,7 +1,7 @@
-const network = require("@visx/network");
+import { Graph, Nodes, Links, DefaultNode, DefaultLinks } from "@visx/network";
 
-exports.graphImpl = network.Graph;
-exports.nodesImpl = network.Nodes;
-exports.linksImpl = network.Links;
-exports.defaultNodeImpl = network.DefaultNode;
-exports.defaultLinksImpl = network.DefaultLinks;
+export const graphImpl = Graph;
+export const nodesImpl = Nodes;
+export const linksImpl = Links;
+export const defaultNodeImpl = DefaultNode;
+export const defaultLinksImpl = DefaultLinks;

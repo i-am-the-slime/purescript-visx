@@ -1,10 +1,10 @@
-const annotation = require("@visx/annotation")
+import { Annotation, EditableAnnotation, CircleSubject, Connector, AnnotationContext, Label, LinePathAnnotation, LineSubject } from "@visx/annotation"
 
-exports.annotationImpl = annotation.Annotation
-exports.editableAnnotationImpl = annotation.EditableAnnotation
-exports.circleSubjectImpl = annotation.CircleSubject
-exports.connectorImpl = annotation.Connector
-exports.annotationContextImpl = annotation.AnnotationContext
-exports.labelImpl = annotation.Label
-exports.linePathAnnotationImpl = annotation.LinePathAnnotation
-exports.lineSubjectImpl = annotation.LineSubject
+export const annotationImpl = Annotation
+export const editableAnnotationImpl = EditableAnnotation
+export const circleSubjectImpl = CircleSubject
+export const connectorImpl = Connector
+export const annotationContextImpl = AnnotationContext
+export const labelImpl = Label
+export const linePathAnnotationImpl = LinePathAnnotation
+export const lineSubjectImpl = LineSubject

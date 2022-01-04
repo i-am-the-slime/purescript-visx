@@ -1,13 +1,13 @@
-const legend = require("@visx/legend")
+import { Legend, LegendItem, LegendLabel, LegendLinear, LegendOrdinal, LegendQuantile, LegendShape, LegendSize, LegendThreshold, LineShape, RectShape } from "@visx/legend"
 
-exports.legendImpl = legend.Legend
-exports.legendLegend = legend.LegendItem
-exports.legendLabelImpl = legend.LegendLabel
-exports.legendLinearImpl = legend.LegendLinear
-exports.legendOrdinalImpl = legend.LegendOrdinal
-exports.legendQuantileImpl = legend.LegendQuantile
-exports.legendShapeImpl = legend.LegendShape
-exports.legendSizeImpl = legend.LegendSize
-exports.legendThresholdImpl = legend.LegendThreshold
-exports.lineShapeImpl = legend.LineShape
-exports.rectShapeImpl = legend.RectShape
+export const legendImpl = Legend
+export const legendLegend = LegendItem
+export const legendLabelImpl = LegendLabel
+export const legendLinearImpl = LegendLinear
+export const legendOrdinalImpl = LegendOrdinal
+export const legendQuantileImpl = LegendQuantile
+export const legendShapeImpl = LegendShape
+export const legendSizeImpl = LegendSize
+export const legendThresholdImpl = LegendThreshold
+export const lineShapeImpl = LineShape
+export const rectShapeImpl = RectShape

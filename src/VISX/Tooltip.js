@@ -1,8 +1,7 @@
-const tooltip = require("@visx/tooltip");
+import { useTooltip, Tooltip, defaultStyles, tooltipWithBounds, portal } from "@visx/tooltip";
 
-exports.useTooltipImpl = tooltip.useTooltip;
-// exports.useTooltipInPortalImpl = tooltip.useTooltipInPortal;
-exports.tooltipImpl = tooltip.Tooltip;
-exports.defaultStylesImpl = tooltip.defaultStyles;
-exports.tooltipWithBoundsImpl = tooltip.tooltipWithBounds;
-exports.portalImpl = tooltip.portal;
+export const useTooltipImpl = useTooltip;
+export const tooltipImpl = Tooltip;
+export const defaultStylesImpl = defaultStyles;
+export const tooltipWithBoundsImpl = tooltipWithBounds;
+export const portalImpl = portal;

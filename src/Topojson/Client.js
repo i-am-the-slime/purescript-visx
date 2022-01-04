@@ -1,3 +1,3 @@
-const topojsonClient = require("topojson-client")
+import { feature } from "topojson-client";
 
-exports.featureImpl = topojsonClient.feature
+export const featureImpl = feature;

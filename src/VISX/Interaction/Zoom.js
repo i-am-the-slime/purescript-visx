@@ -1,3 +1,3 @@
-const zoom = require("@visx/zoom")
+import { Zoom } from "@visx/zoom";
 
-exports.zoomImpl = zoom.Zoom
+export const zoomImpl = Zoom;

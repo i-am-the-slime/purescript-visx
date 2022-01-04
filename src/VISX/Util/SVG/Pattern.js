@@ -1,4 +1,4 @@
-const pattern = require("@visx/pattern")
+import * as pattern from "@visx/pattern"
 
 exports.pattern = pattern.Pattern
 exports.patternLinesImpl = pattern.PatternLines

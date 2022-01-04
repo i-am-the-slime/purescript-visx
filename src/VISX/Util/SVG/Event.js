@@ -1,3 +1,3 @@
-const event = require("@visx/event")
+import { localPoint } from "@visx/event";
 
-exports.localPointImpl = event.localPoint
+export const localPointImpl = localPoint;

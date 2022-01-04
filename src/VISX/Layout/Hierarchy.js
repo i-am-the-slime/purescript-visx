@@ -1,9 +1,8 @@
-const hierarchy = require("@visx/hierarchy");
+import * as hierarchy from "@visx/hierarchy";
 
-exports.hierarchy = hierarchy.hierarchy;
-
-exports.clusterImpl = hierarchy.Cluster;
-exports.packImpl = hierarchy.Pack;
-exports.partitionImpl = hierarchy.Partition;
-exports.treeImpl = hierarchy.Tree;
-exports.treemapImpl = hierarchy.Treemap;
+export const hierarchy = hierarchy.hierarchy;
+export const clusterImpl = hierarchy.Cluster;
+export const packImpl = hierarchy.Pack;
+export const partitionImpl = hierarchy.Partition;
+export const treeImpl = hierarchy.Tree;
+export const treemapImpl = hierarchy.Treemap;

@@ -1,7 +1,13 @@
-const responsive = require("@visx/responsive")
+import {
+  withScreenSize,
+  withParentSize,
+  withParentSizeModern,
+  ParentSize,
+  ScaleSVG
+} from "@visx/responsive";
 
-exports.withScreenSize = responsive.withScreenSize
-exports.withParentSize = responsive.withParentSize
-exports.withParentSizeModern = responsive.withParentSizeModern
-exports.parentSizeImpl = responsive.ParentSize
-exports.scaleSVGImpl = responsive.ScaleSVG
+export const withScreenSize = withScreenSize;
+export const withParentSize = withParentSize;
+export const withParentSizeModern = withParentSizeModern;
+export const parentSizeImpl = ParentSize;
+export const scaleSVGImpl = ScaleSVG;

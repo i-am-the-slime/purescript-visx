@@ -1,7 +1,7 @@
-const axis = require("@visx/axis")
+import { Axis, AxisBottom, AxisLeft, AxisRight, AxisTop } from "@visx/axis"
 
-exports.axisImpl = axis.Axis
-exports.axisBottomImpl = axis.AxisBottom
-exports.axisLeftImpl = axis.AxisLeft
-exports.axisRightImpl = axis.AxisRight
-exports.axisTopImpl = axis.AxisTop
+export const axisImpl = Axis
+export const axisBottomImpl = AxisBottom
+export const axisLeftImpl = AxisLeft
+export const axisRightImpl = AxisRight
+export const axisTopImpl = AxisTop

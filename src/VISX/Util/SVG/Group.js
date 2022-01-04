@@ -1,3 +1,3 @@
-const group = require("@visx/group")
+import { Group } from "@visx/group"
 
-exports.groupImpl = group.Group
+export const groupImpl = Group

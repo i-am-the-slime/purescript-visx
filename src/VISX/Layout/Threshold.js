@@ -1,3 +1,3 @@
-const threshold = require("@visx/threshold");
+import { Threshold } from "@visx/threshold";
 
-exports.thresholdImpl = threshold.Threshold;
+export const thresholdImpl = Threshold;

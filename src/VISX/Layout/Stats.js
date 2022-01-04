@@ -1,4 +1,4 @@
-const stats = require("@visx/stats");
+import { BoxPlot, ViolinPlot } from "@visx/stats";
 
-exports.boxPlotImpl = stats.BoxPlot;
-exports.violinPlotImpl = stats.ViolinPlot;
+export const boxPlotImpl = BoxPlot;
+export const violinPlotImpl = ViolinPlot;

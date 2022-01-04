@@ -1,13 +1,13 @@
-const scale = require("@visx/scale");
+import { scaleLinear, scaleBand, scaleQuantize, scaleOrdinal, scaleTime } from "@visx/scale";
 
-exports.scaleLinearImpl = scale.scaleLinear;
-exports.scaleBandImpl = scale.scaleBand;
-exports.scaleQuantizeImpl = scale.scaleQuantize;
-exports.scaleOrdinalImpl = scale.scaleOrdinal;
-exports.scaleTimeImpl = scale.scaleTime;
+export const scaleLinearImpl = scaleLinear;
+export const scaleBandImpl = scaleBand;
+export const scaleQuantizeImpl = scaleQuantize;
+export const scaleOrdinalImpl = scaleOrdinal;
+export const scaleTimeImpl = scaleTime;
 // exports.scaleUtcImpl = scale.scaleUtc;
 
-exports.bandwidth = (bandScale) => bandScale.bandwidth;
+export function bandwidth(bandScale) { return bandScale.bandwidth; }
 
-exports.scaleValueImpl = (scale) => (x) => scale(x);
-exports.invertValueImpl = (scale) => (x) => scale.invert(x);
+export function scaleValueImpl(scale) { return (x) => scale(x); }
+export function invertValueImpl(scale) { return (x) => scale.invert(x); }

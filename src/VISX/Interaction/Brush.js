@@ -1,3 +1,3 @@
-const brush = require("@visx/brush");
+import { Brush } from "@visx/brush";
 
-exports.brushImpl = brush.Brush;
+export const brushImpl = Brush;

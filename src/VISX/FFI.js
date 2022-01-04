@@ -1,1 +1,1 @@
-exports._undefined = undefined;
+export const _undefined = undefined;

@@ -1,7 +1,11 @@
-var d3TimeFormat = require("d3-time-format");
+import { timeFormat, timeFormatLocale } from "d3-time-format";
 
-exports.timeFormat = d3TimeFormat.timeFormat;
+export const timeFormat = timeFormat;
 
-exports.localeTimeFormat = (str) => (locale) => locale.format(str);
+export function localeTimeFormat(str) {
+  return (locale) => locale.format(str);
+}
 
-exports.timeFormatLocale = (def) => d3TimeFormat.timeFormatLocale(def);
+export function timeFormatLocale(def) {
+  return timeFormatLocale(def);
+}

@@ -1,9 +1,17 @@
-const geo = require("@visx/geo")
+import {
+  Mercator,
+  Graticule,
+  EqualEarth,
+  NaturalEarth,
+  Orthographic,
+  AlbersUsa,
+  Albers
+} from "@visx/geo";
 
-exports.mercatorImpl = geo.Mercator
-exports.graticuleImpl = geo.Graticule
-exports.equalEarthImpl = geo.EqualEarth
-exports.naturalEarthImpl = geo.NaturalEarth
-exports.orthographicImpl = geo.Orthographic
-exports.albersUsaImpl = geo.AlbersUsa
-exports.albersImpl = geo.Albers
+export const mercatorImpl = Mercator;
+export const graticuleImpl = Graticule;
+export const equalEarthImpl = EqualEarth;
+export const naturalEarthImpl = NaturalEarth;
+export const orthographicImpl = Orthographic;
+export const albersUsaImpl = AlbersUsa;
+export const albersImpl = Albers;

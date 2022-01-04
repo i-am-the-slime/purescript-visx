@@ -1,4 +1,4 @@
-const heatmap = require("@visx/heatmap");
+import { HeatmapRect, HeatmapCircle } from "@visx/heatmap";
 
-exports.heatmapRectImpl = heatmap.HeatmapRect;
-exports.heatmapCircleImpl = heatmap.HeatmapCircle;
+export const heatmapRectImpl = HeatmapRect;
+export const heatmapCircleImpl = HeatmapCircle;

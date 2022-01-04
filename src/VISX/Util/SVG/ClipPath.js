@@ -1,4 +1,4 @@
-const clipPath = require("@visx/clip-path")
+import { RectClipPath, CircleClipPath } from "@visx/clip-path";
 
-exports.rectClipPathImpl = clipPath.RectClipPath
-exports.circleClipPathImpl = clipPath.CircleClipPath
+export const rectClipPathImpl = RectClipPath;
+export const circleClipPathImpl = CircleClipPath;

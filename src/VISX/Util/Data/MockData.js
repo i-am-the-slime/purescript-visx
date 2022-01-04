@@ -1,5 +1,3 @@
-const mockdata = require("@visx/mock-data")
+import { letterFrequency } from "@visx/mock-data";
 
-exports.letterFrequency = mockdata.letterFrequency
-
-
+export const letterFrequency = letterFrequency;

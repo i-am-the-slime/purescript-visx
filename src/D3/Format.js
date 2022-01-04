@@ -1,3 +1,3 @@
-const d3format = require("d3-format");
+import { format } from "d3-format";
 
-exports.format = d3format.format;
+export const format = format;
