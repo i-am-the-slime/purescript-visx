@@ -1,8 +1,8 @@
-import * as pattern from "@visx/pattern"
+import * as visxPattern from "@visx/pattern"
 
-export const pattern = pattern.pattern
-export const patternLinesImpl = pattern.PatternLines
-export const patternCirclesImpl = pattern.PatternCircles
-export const patternWavesImpl = pattern.PatternWaves
-export const patternHexagonsImpl = pattern.PatternHexagons
-export const patternPathImpl = pattern.PatternPath
+export const visxPattern = visxPattern.visxPattern
+export const patternLinesImpl = visxPattern.PatternLines
+export const patternCirclesImpl = visxPattern.PatternCircles
+export const patternWavesImpl = visxPattern.PatternWaves
+export const patternHexagonsImpl = visxPattern.PatternHexagons
+export const patternPathImpl = visxPattern.PatternPath
