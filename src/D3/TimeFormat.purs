@@ -13,7 +13,11 @@ foreign import timeFormatLocale ∷ D3TimeFormatLocaleDefinition → D3TimeForma
 
 newtype D3TimeFormatLocaleDefinition
   = D3TimeFormatLocaleDefinition
-  { dateTime ∷ String
+  { decimal ∷ String
+  , thousands ∷ String
+  , grouping ∷ Array Int
+  , currency ∷ Array String
+  , dateTime ∷ String
   , date ∷ String
   , time ∷ String
   , periods ∷ Array String
