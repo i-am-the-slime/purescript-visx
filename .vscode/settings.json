@@ -6,5 +6,6 @@
   },
   "purescript.buildCommand": "spago -x stories.dhall build --purs-args --json-errors",
   "workbench.colorTheme": "Halcyon",
-  "prettier.trailingComma": "none"
+  "prettier.trailingComma": "none",
+  "workspace.isHidden": false
 }
