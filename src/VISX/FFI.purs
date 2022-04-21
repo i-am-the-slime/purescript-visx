@@ -28,7 +28,7 @@ import Data.JSDate (JSDate)
 import Data.List.NonEmpty (singleton)
 import Data.Maybe (Maybe(..), fromMaybe, maybe)
 import Data.Nullable (Nullable, toMaybe, toNullable)
-import Data.Symbol (class IsSymbol, SProxy(..), reflectSymbol)
+import Data.Symbol (class IsSymbol, reflectSymbol)
 import Data.Traversable (sequence, traverse)
 import Data.TraversableWithIndex (traverseWithIndex)
 import Data.Tuple (Tuple(..))
@@ -121,7 +121,7 @@ instance readTuple ∷ ReadTuple (Tuple a b) ⇒ ReadForeign (Tuple a b) where
 -- | A class for reading JSON arrays of length `n` as nested tuples of size `n`
 class ReadTuple a where
   readTupleImpl ∷ Int → Foreign → F a
-  
+
   tupleSize ∷ Proxy a → Int
 
 instance readTupleNestedHelper ∷ (ReadForeign a, ReadTuple (Tuple b c)) ⇒ ReadTuple (Tuple a (Tuple b c)) where
@@ -209,7 +209,7 @@ instance readFieldsCons ∷
       value ← withExcept' (readImpl =<< readProp name obj)
       pure $ Builder.insert nameP value
     rest = getFields tailP obj
-    nameP = SProxy ∷ SProxy name
+    nameP = Proxy ∷ Proxy name
     tailP = Proxy ∷ Proxy tail
     name = reflectSymbol nameP
     withExcept' = withExcept <<< map $ ErrorAtProperty name
@@ -304,7 +304,7 @@ instance consWriteForeignFields ∷
   WriteForeignFields (Cons name ty tail) row from to where
   writeImplFields _ rec = result
     where
-    namep = SProxy ∷ SProxy name
+    namep = Proxy ∷ Proxy name
     value = writeImpl $ get namep rec
     tailp = Proxy ∷ Proxy tail
     rest = writeImplFields tailp rec
