@@ -11,6 +11,8 @@ When creating a new Spago project, you can use
 to generate this file without the comments in this block.
 -}
 { name = "visx"
+, license = "MIT"
+, repository = "https://github.com/i-am-the-slime/purescript-visx"
 , dependencies =
   [ "arrays"
   , "console"
