@@ -35,11 +35,11 @@
     "babel-loader": "^8.2.2",
     "fast-glob": "^3.2.7",
     "prettier": "^2.2.1",
-    "purescript": "^0.14.5",
-    "spago": "^0.20.3"
+    "purescript": "^0.15.4",
+    "spago": "1.0.5"
   },
   "scripts": {
-    "prestorybook": "spago -x stories.dhall build",
+    "prestorybook": "spago build --purs-args 'stories/**/*.purs'",
     "storybook": "start-storybook -p 6006  -s ./node_modules/",
     "build-storybook": "build-storybook  -s ./node_modules/"
   }
