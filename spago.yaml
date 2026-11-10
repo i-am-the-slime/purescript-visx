@@ -36,5 +36,4 @@ package:
     main: Test.Main
     dependencies:
       - console: ">=6.0.0 <7.0.0"
-      - debug: ">=6.0.0 <7.0.0"
 workspace: {}
